@@ -1,108 +1,104 @@
-{% extends "core/base.html" %} {% block title %}
-<title>Teacher Management Application</title>
-{% endblock title %} {% block content %}
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Teacher Management System</h1>
+{% extends 'core/base.html' %} {% block title %}
+  <title>Teacher Management Application</title>
+{% endblock %} {% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Teacher Management System</h1>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Show all teachers</h5>
-          <p class="card-text">View a list of all teachers.</p>
-          <a href="{% url 'show-all-teachers' %}" class="btn btn-primary btn-home"
-            >Show All</a
-          >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Show all teachers</h5>
+            <p class="card-text">View a list of all teachers.</p>
+            <a href="{% url 'show-all-teachers' %}" class="btn btn-primary btn-home">Show All</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Add a teacher</h5>
+            <p class="card-text">Add a new teacher to the system.</p>
+            <a href="{% url 'add-teacher' %}" class="btn btn-success btn-home">Add Teacher</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Filter teachers</h5>
+            <p class="card-text">Filter teachers based on criteria.</p>
+            <a href="{% url 'filter-teachers' %}" class="btn btn-warning btn-home">Filter</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Add a teacher</h5>
-          <p class="card-text">Add a new teacher to the system.</p>
-          <a href="{% url 'add-teacher' %}" class="btn btn-success btn-home"
-            >Add Teacher</a
-          >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Search for a teacher</h5>
+            <p class="card-text">Search for a specific teacher.</p>
+            <a href="{% url 'search-teacher' %}" class="btn btn-info btn-home">Search</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Filter teachers</h5>
-          <p class="card-text">Filter teachers based on criteria.</p>
-          <a href="{% url 'filter-teachers' %}" class="btn btn-warning btn-home"
-            >Filter</a
-          >
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Update a teacher's record</h5>
+            <p class="card-text">Update information for a teacher.</p>
+            <a href="{% url 'update-teacher' %}" class="btn btn-secondary btn-home">Update</a>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Search for a teacher</h5>
-          <p class="card-text">Search for a specific teacher.</p>
-          <a href="{% url 'search-teacher' %}" class="btn btn-info btn-home">Search</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Update a teacher's record</h5>
-          <p class="card-text">Update information for a teacher.</p>
-          <a href="{% url 'update-teacher' %}" class="btn btn-secondary btn-home"
-            >Update</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Delete a teacher</h5>
-          <p class="card-text">Remove a teacher from the system.</p>
-          <a href="{% url 'delete-teacher' %}" class="btn btn-danger btn-home">Delete</a>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Delete a teacher</h5>
+            <p class="card-text">Remove a teacher from the system.</p>
+            <a href="{% url 'delete-teacher' %}" class="btn btn-danger btn-home">Delete</a>
+          </div>
         </div>
       </div>
     </div>
 
     <p class="mt-4">Additional Feature:</p>
 
-    <div class="row mt-2">
+    <div class="row">
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Calculate Average Classes</h5>
-            <p class="card-text">
-              Calculate and display the average number of classes teachers take.
-            </p>
-            <a href="{% url 'calculate-avg' %}">
-              <button id="calculateAverageBtn" class="btn btn-success btn-home">
-                Calculate Average
-              </button>
-            </a>
+            <p class="card-text">Calculate and display the average number of classes teachers take.</p>
+            <a href="{% url 'calculate-avg' %}"><button id="calculateAverageBtn" class="btn btn-success btn-home">Calculate Average</button></a>
             {% if avg >= 0 %}
-            <p id="averageResult" class="mt-3">
-              Average Classes: <span id="averageValue">{{ avg }}</span>
-            </p>
+              <p id="averageResult" class="mt-3">
+                Average Classes: <span id="averageValue">{{ avg }}</span>
+              </p>
             {% else %}
-            <p id="averageResult" class="mt-3">
-              Average Classes: <span id="averageValue">-</span>
-            </p>
+              <p id="averageResult" class="mt-3">
+                Average Classes: <span id="averageValue">-</span>
+              </p>
             {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Download Teachers Data</h5>
+            <p class="card-text">Get the teachers' information in an JSON format for download.</p>
+            <a href="" class="btn btn-dark btn-home">Download JSON</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-{% endblock content %}
+{% endblock %}

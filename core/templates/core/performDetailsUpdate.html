@@ -1,58 +1,36 @@
-{% extends "core/base.html" %} {% block title %}
-<title>Update Teacher</title>
-{% endblock title %} {% block content %}
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Update Teacher</h1>
+{% extends 'core/base.html' %} {% block title %}
+  <title>Update Teacher</title>
+{% endblock %} {% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Update Teacher</h1>
 
-  {% if messages %}
-  <div class="alert alert-info">
-    {% for message in messages %} {{ message }} {% endfor %}
+    {% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form action="{% url 'update' teacher.id %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" class="form-control" id="fullName" name="full_name" value="{{ teacher.full_name }}" />
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" name="age" value="{{ teacher.age }}" />
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" value="{{ teacher.date_of_birth }}" />
+      </div>
+      <div class="form-group">
+        <label for="classes">Number of Classes</label>
+        <input type="number" class="form-control" id="classes" name="classes" value="{{ teacher.classes }}" />
+      </div>
+      <button type="submit" class="btn btn-primary">Update Teacher</button>
+    </form>
   </div>
-  {% endif %}
-
-  <form action="{% url 'update' teacher.id %}" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="fullName">Full Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="fullName"
-        name="full_name"
-        value="{{ teacher.full_name }}"
-      />
-    </div>
-    <div class="form-group">
-      <label for="age">Age</label>
-      <input
-        type="number"
-        class="form-control"
-        id="age"
-        name="age"
-        value="{{ teacher.age }}"
-      />
-    </div>
-    <div class="form-group">
-      <label for="dob">Date of Birth</label>
-      <input
-        type="date"
-        class="form-control"
-        id="dob"
-        name="dob"
-        value="{{ teacher.date_of_birth }}"
-      />
-    </div>
-    <div class="form-group">
-      <label for="classes">Number of Classes</label>
-      <input
-        type="number"
-        class="form-control"
-        id="classes"
-        name="classes"
-        value="{{ teacher.classes }}"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Update Teacher</button>
-  </form>
-</div>
-{% endblock content %}
+{% endblock %}

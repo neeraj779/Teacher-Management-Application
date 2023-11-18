@@ -22,12 +22,37 @@ h1 {
     margin-bottom: 20px;
 }
 
-
 .card {
+    margin-top: 10px;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #697e91;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     transition: transform 0.3s;
+}
+
+.card-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #425675;
+    display: flex;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.2rem;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-img-top {
+    height: 200px;
+    width: 100%;
 }
 
 label {
@@ -45,32 +70,6 @@ input {
 .btn-home {
     width: 100%;
     margin-top: 10px;
-}
-
-button {
-    background-color: #28a745;
-    border: none;
-    padding: 10px 20px;
-    color: #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-title {
-    font-size: 1.2rem;
-}
-
-.card-body {
-    padding: 15px;
 }
 
 .alert {
