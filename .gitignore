@@ -6,6 +6,7 @@
 **/.idea
 **/.vscode 
 **/migrations
+staticfiles
 
 # Python # 
 *.py[cod] 
