@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %} {% block title %}
+  <title>Teacher Management Application</title>
+{% endblock %} {% block content %}
+  <div class="container mt-5">
+    <form action="{% url 'import-json' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="formFile" class="form-label">Upload</label>
+        <input class="form-control" type="file" id="jsonFile" name="json_file" accept=".json" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Import</button>
+    </form>
+    {% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

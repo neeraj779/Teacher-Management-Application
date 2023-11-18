@@ -1,4 +1,6 @@
+import json
 from django.contrib import messages
+from django.http import FileResponse
 from django.shortcuts import render, redirect
 from console.main import save_teachers_to_json, load_teachers_from_json, search_teachers, calculate_average
 
@@ -17,33 +19,32 @@ def show_all_teachers(request):
 
 
 def add_teacher(request):
+    if request.method == 'POST':
+        try:
+            full_name = request.POST.get('full_name')
+            age = int(request.POST.get('age'))
+            date_of_birth = request.POST.get('dob')
+            classes = int(request.POST.get('classes'))
+
+            teachers_data = load_teachers_from_json()
+
+            new_teacher = {
+                'id': len(teachers_data) + 1,
+                'full_name': full_name,
+                'age': age,
+                'date_of_birth': date_of_birth,
+                'classes': classes,
+            }
+
+            teachers_data.append(new_teacher)
+            save_teachers_to_json(teachers_data)
+
+            success_message = 'Teacher added successfully'
+            return render(request, 'core/addTeacher.html', {'success_message': success_message})
+        except Exception as e:
+            return render(request, 'core/addTeacher.html', {'error_message': e})
+
     return render(request, 'core/addTeacher.html')
-
-
-def add_teacher_data(request):
-    try:
-        full_name = request.POST.get('full_name')
-        age = int(request.POST.get('age'))
-        date_of_birth = request.POST.get('dob')
-        classes = int(request.POST.get('classes'))
-
-        teachers_data = load_teachers_from_json()
-
-        new_teacher = {
-            'id': len(teachers_data) + 1,
-            'full_name': full_name,
-            'age': age,
-            'date_of_birth': date_of_birth,
-            'classes': classes,
-        }
-
-        teachers_data.append(new_teacher)
-        save_teachers_to_json(teachers_data)
-
-        success_message = 'Teacher added successfully'
-        return render(request, 'core/addTeacher.html', {'success_message': success_message})
-    except Exception as e:
-        return render(request, 'core/addTeacher.html', {'error_message': e})
 
 
 def filter_teachers(request):
@@ -106,7 +107,6 @@ def update_teacher(request):
 
 def update(request, id):
     teachers = load_teachers_from_json()
-    # [0] because it returns a list of one element and we want the element itself not the list of one element
     teacher = [teacher for teacher in teachers if teacher['id'] == id][0]
     if request.method == 'POST':
         teacher['full_name'] = request.POST.get('full_name')
@@ -145,3 +145,37 @@ def delete_teacher(request):
 def calculate_avg(request):
     avg = calculate_average()
     return render(request, 'core/home.html', {'avg': avg})
+
+
+def download_json(request):
+    file_path = 'data/teachersData.json'
+    response = FileResponse(open(file_path, 'rb'), as_attachment=True)
+    return response
+
+
+def import_json(request):
+    if request.method == 'POST':
+        try:
+            uploaded_file = request.FILES['json_file']
+            if not uploaded_file.name.endswith('.json'):
+                messages.error(request, 'Please upload a JSON file')
+                return render(request, 'core/importJson.html')
+
+            existing_teachers_data = load_teachers_from_json()
+
+            json_content = json.loads(uploaded_file.read().decode('utf-8'))
+            new_teachers_data = json_content.get('teachersData', [])
+
+            existing_teachers_data.extend(new_teachers_data)
+
+            save_teachers_to_json(existing_teachers_data)
+
+            messages.success(request, 'JSON file uploaded successfully')
+            return redirect('import-json')
+        except json.JSONDecodeError:
+            return HttpResponseBadRequest('Invalid JSON file. Please check the file format.')
+        except Exception as e:
+            messages.success(request, f"error: {e}")
+            return redirect('import-json')
+    else:
+        return render(request, 'core/importJson.html')

@@ -75,7 +75,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Calculate Average Classes</h5>
-            <p class="card-text">Calculate and display the average number of classes teachers take.</p>
+            <p class="card-text">Average number of classes taught by teachers.</p>
             <a href="{% url 'calculate-avg' %}"><button id="calculateAverageBtn" class="btn btn-success btn-home">Calculate Average</button></a>
             {% if avg >= 0 %}
               <p id="averageResult" class="mt-3">
@@ -94,8 +94,18 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Download Teachers Data</h5>
-            <p class="card-text">Get the teachers' information in an JSON format for download.</p>
-            <a href="" class="btn btn-dark btn-home">Download JSON</a>
+            <p class="card-text">Get the teacher's information in an JSON format for download. You can use this file to import the teacher's data.</p>
+            <a href="{% url 'download-json' %}" class="btn btn-primary btn-home">Download JSON</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Import Json File</h5>
+            <p class="card-text">Import the teacher data from a JSON file you can download a JSON file to see the required format for importing teacher data.</p>
+            <a href="{% url 'import-json' %}" class="btn btn-success btn-home">Import JSON</a>
           </div>
         </div>
       </div>

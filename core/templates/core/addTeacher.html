@@ -16,7 +16,7 @@
       </div>
     {% endif %}
 
-    <form action="{% url 'add-teacher-data' %}" method="post">
+    <form action="{% url 'add-teacher' %}" method="post">
       {% csrf_token %}
       <div class="form-group">
         <label for="fullName">Full Name</label>
