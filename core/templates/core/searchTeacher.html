@@ -1,6 +1,11 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}
   <title>Search Teacher</title>
 {% endblock %}
+
 {% block content %}
   <div class="container mt-5">
     <h1 class="text-center mb-4">Search Teacher</h1>
@@ -36,7 +41,9 @@
           </div>
         {% endfor %}
       </div>
-    {% endif %} {% if messages %}
+    {% endif %} 
+    
+    {% if messages %}
       <div class="alert alert-info">
         {% for message in messages %}
           {{ message }}

@@ -39,10 +39,11 @@ def add_teacher(request):
             teachers_data.append(new_teacher)
             save_teachers_to_json(teachers_data)
 
-            success_message = 'Teacher added successfully'
+            success_message = f'Teacher "{full_name}" added successfully'
             return render(request, 'core/addTeacher.html', {'success_message': success_message})
         except Exception as e:
-            return render(request, 'core/addTeacher.html', {'error_message': e})
+            messages.error(request, f'Error: {e}. Please check your input.')
+            return render(request, 'core/addTeacher.html')
 
     return render(request, 'core/addTeacher.html')
 
@@ -116,7 +117,7 @@ def update(request, id):
 
         save_teachers_to_json(teachers)
 
-        messages.success(request, 'Teacher updated successfully')
+        messages.success(request, 'Teacher information updated successfully')
         return redirect('update-teacher')
     else:
         return render(request, 'core/performDetailsUpdate.html', {'teacher': teacher})
@@ -133,7 +134,7 @@ def delete_teacher(request):
 
         save_teachers_to_json(teachers)
 
-        success_message = 'Teacher deleted successfully'
+        success_message = 'Teacher record successfully removed'
         return render(request, 'core/deleteTeacherDetails.html', {'teachers': teachers, 'success_message': success_message})
     else:
         if not teachers:
@@ -170,12 +171,15 @@ def import_json(request):
 
             save_teachers_to_json(existing_teachers_data)
 
-            messages.success(request, 'JSON file uploaded successfully')
+            success_message = 'JSON file uploaded successfully.'
+            messages.success(request, success_message)
             return redirect('import-json')
         except json.JSONDecodeError:
-            return HttpResponseBadRequest('Invalid JSON file. Please check the file format.')
+            messages.error(
+                request, 'Invalid JSON file. Please check the file format.')
+            return render(request, 'core/importJson.html')
         except Exception as e:
-            messages.success(request, f"error: {e}")
+            messages.error(request, f'Error: {e}. Please try again.')
             return redirect('import-json')
     else:
         return render(request, 'core/importJson.html')

@@ -1,6 +1,10 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}
-  <title>Update Teacher</title>
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Update Teacher Data</title>
 {% endblock %}
+
 {% block content %}
   <div class="container mt-5">
     <h1 class="text-center mb-4">Update Teacher</h1>
@@ -11,7 +15,9 @@
           {{ message }}
         {% endfor %}
       </div>
-    {% endif %} {% if teachers %}
+    {% endif %}
+
+    {% if teachers %}
       <h2 class="text-center mb-4">All Teachers</h2>
       <div class="row">
         {% for teacher in teachers %}
@@ -24,14 +30,12 @@
                 <span class="card-text">Age: {{ teacher.age }}</span>
                 <span class="card-text">Date of Birth: {{ teacher.date_of_birth }}</span>
                 <span class="card-text">Classes: {{ teacher.classes }}</span>
-                <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update Teacher</a>
+                <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update Teacher Record</a>
               </div>
             </div>
           </div>
         {% endfor %}
       </div>
-    {% else %}
-
     {% endif %}
   </div>
 {% endblock %}

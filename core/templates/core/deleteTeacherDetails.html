@@ -1,22 +1,32 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}
-  <title>Delete Teacher</title>
-{% endblock %} {% block content %}
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Delete Teacher Data</title>
+{% endblock %}
+
+{% block content %}
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Delete Teacher</h1>
+    <h1 class="text-center mb-4">Delete Teacher Record</h1>
     {% if teachers %}
       <h2 class="text-center mb-4">All Teachers</h2>
-    {% endif %} {% if messages %}
+    {% endif %}
+
+    {% if messages %}
       <div class="alert alert-info">
         {% for message in messages %}
           {{ message }}
         {% endfor %}
       </div>
-    {% endif %} {% if success_message %}
+    {% endif %}
+
+    {% if success_message %}
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ success_message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     {% endif %}
+
     <div class="row">
       {% for teacher in teachers %}
         <div class="col-md-4 mb-4">

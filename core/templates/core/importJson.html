@@ -1,6 +1,10 @@
-{% extends 'core/base.html' %} {% block title %}
-  <title>Teacher Management Application</title>
-{% endblock %} {% block content %}
+{% extends 'core/base.html' %}
+
+{% block title %}
+  <title>Import Json</title>
+{% endblock %}
+
+{% block content %}
   <div class="container mt-5">
     <form action="{% url 'import-json' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
@@ -10,6 +14,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Import</button>
     </form>
+
     {% if messages %}
       <div class="alert alert-info">
         {% for message in messages %}

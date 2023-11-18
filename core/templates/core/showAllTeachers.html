@@ -1,7 +1,19 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}
+{% extends 'core/base.html' %}
+
+{% load static %} {% block title %}
   <title>All Teachers</title>
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
   <div class="container mt-5">
+    {% if messages %}
+      <div class="alert alert-info">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <h1 class="text-center mb-4">All Teachers</h1>
     <div class="row">
       {% for teacher in teachers %}
@@ -19,12 +31,5 @@
         </div>
       {% endfor %}
     </div>
-    {% if messages %}
-      <div class="alert alert-info">
-        {% for message in messages %}
-          {{ message }}
-        {% endfor %}
-      </div>
-    {% endif %}
   </div>
 {% endblock %}

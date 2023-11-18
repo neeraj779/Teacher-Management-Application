@@ -1,6 +1,10 @@
-{% extends 'core/base.html' %} {% block title %}
-  <title>Teacher Management Application</title>
-{% endblock %} {% block content %}
+{% extends 'core/base.html' %}
+
+{% block title %}
+  <title>Add Teacher Data</title>
+{% endblock %}
+
+{% block content %}
   <div class="container mt-5">
     <h1 class="text-center mb-4">Teacher's Record</h1>
 
@@ -9,7 +13,9 @@
         {{ success_message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-    {% endif %} {% if error_message %}
+    {% endif %}
+
+    {% if error_message %}
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ error_message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -20,19 +26,19 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name" />
+        <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name" required />
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" />
+        <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required />
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" name="dob" />
+        <input type="date" class="form-control" id="dob" name="dob" required />
       </div>
       <div class="form-group">
         <label for="classes">Number of Classes</label>
-        <input type="number" class="form-control" id="classes" name="classes" placeholder="Enter the number of classes" />
+        <input type="number" class="form-control" id="classes" name="classes" placeholder="Enter the number of classes" required />
       </div>
       <button type="submit" class="btn btn-primary">Add Teacher</button>
     </form>
