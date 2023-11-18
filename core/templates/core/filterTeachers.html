@@ -1,0 +1,57 @@
+{% extends "core/base.html" %} {% block title %}
+<title>Teacher Management Application</title>
+{% endblock title %} {% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Filter Teachers by Criteria</h1>
+
+  <form action="{% url 'filter-teachers' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="ageFilter">Filter by Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        name="age"
+        placeholder="Enter age"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="classesFilter">Filter by Number of Classes</label>
+      <input
+        type="number"
+        class="form-control"
+        id="class"
+        name="classes"
+        placeholder="Enter No of classes"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Apply Filters</button>
+  </form>
+
+  {% if teachers %}
+  <h1 class="text-center mb-4">Filter Teachers:</h1>
+  {% endif %}
+  <div class="row">
+    {% for teacher in teachers %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ teacher.full_name }}</h5>
+          <p class="card-text">Age: {{ teacher.age }}</p>
+          <p class="card-text">Date of Birth: {{ teacher.date_of_birth }}</p>
+          <p class="card-text">Classes: {{ teacher.classes }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if messages %}
+  <div class="alert alert-info">
+    {% for message in messages %} {{ message }} {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

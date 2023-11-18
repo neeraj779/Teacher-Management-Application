@@ -1,0 +1,11 @@
+{
+  "teachersData": [
+    {
+      "id": 1,
+      "full_name": "Neeraj",
+      "age": 21,
+      "date_of_birth": "2002-01-01",
+      "classes": 7
+    }
+  ]
+}

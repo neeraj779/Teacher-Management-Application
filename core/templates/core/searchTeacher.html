@@ -1,0 +1,42 @@
+{% extends "core/base.html" %} {% block title %}
+<title>Search Teacher</title>
+{% endblock title %}{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Search Teacher</h1>
+  <form method="GET" action="{% url 'search-teacher' %}">
+    <div class="form-group">
+      <label for="searchQuery">Search Query</label>
+      <input
+        type="text"
+        class="form-control"
+        id="searchQuery"
+        name="query"
+        placeholder="Enter search query"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  {% if search_results %}
+  <h2 class="text-center mt-4">Search Results</h2>
+  <div class="row">
+    {% for teacher in search_results %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ teacher.full_name }}</h5>
+          <p class="card-text">Age: {{ teacher.age }}</p>
+          <p class="card-text">Date of Birth: {{ teacher.date_of_birth }}</p>
+          <p class="card-text">Classes: {{ teacher.classes }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% if messages %}
+  <div class="alert alert-info">
+    {% for message in messages %} {{ message }} {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

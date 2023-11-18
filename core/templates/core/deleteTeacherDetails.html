@@ -1,0 +1,43 @@
+{% extends "core/base.html" %} {% block title %}
+<title>Delete Teacher</title>
+{% endblock title %} {% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Delete Teacher</h1>
+  {% if teachers %}
+  <h2 class="text-center mb-4">All Teachers</h2>
+  {% endif %} {% if messages %}
+  <div class="alert alert-info">
+    {% for message in messages %} {{ message }} {% endfor %}
+  </div>
+  {% endif %} {% if success_message %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ success_message }}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endif %}
+  <div class="row">
+    {% for teacher in teachers %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ teacher.full_name }}</h5>
+          <p class="card-text">Age: {{ teacher.age }}</p>
+          <p class="card-text">Date of Birth: {{ teacher.date_of_birth }}</p>
+          <p class="card-text">Classes: {{ teacher.classes }}</p>
+          <form action="{% url 'delete-teacher' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="teacher_id" value="{{ teacher.id }}" />
+            <button type="submit" class="btn btn-danger">Delete Teacher</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
