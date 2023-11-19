@@ -39,41 +39,38 @@ The Teacher Management Application is a comprehensive solution designed for the 
 The application focuses on delivering a user-friendly experience with a range of end-user features. These features include:
 
 ***Landing/Home Page:***
-<pre>
-i) Show all teachers: View a list of all teachers.
-ii) Add a teacher: Add a new teacher to the system.
-iii) Filter teachers based on criteria: Implement filters to sort teachers based on age and the number of classes.
-iv) Search for a teacher: Search for a specific teacher.
-v) Update a teacher's record: Modify information for a teacher.
-vi) Delete a teacher: Remove a teacher from the system.
-</pre>
+- Show all teachers: View a list of all teachers.
+- Add a teacher: Add a new teacher to the system.
+- Filter teachers based on criteria: Implement filters to sort teachers based on age and the number of classes.
+- Search for a teacher: Search for a specific teacher.
+- Update a teacher's record: Modify information for a teacher.
+- Delete a teacher: Remove a teacher from the system.
   
 
 ***Teacher’s Record***
 
-<PRE>
 Each teacher's record includes:
   
-i) Full Name: Complete name of the teacher.
-ii) Age: Age of the teacher.
-iii) Date of Birth: Birthdate of the teacher.
-iv) Number of classes: The count of classes the teacher is responsible for.
-</PRE>
+- Full Name: Complete name of the teacher.
+- Age: Age of the teacher.
+- Date of Birth: Birthdate of the teacher.
+- Number of classes: The count of classes the teacher is responsible for.
 
 ***Filter Teachers by Criteria***
-<pre>
+
 An additional option-based page is implemented to filter teachers:
   
-i) Filter by Age: Categorize teachers based on their age.
-ii) Filter by the number of classes: Sort teachers according to the number of classes they teach.
-</pre>
+- Filter by Age: Categorize teachers based on their age.
+- Filter by the number of classes: Sort teachers according to the number of classes they teach.
 ***File-Based System***
 
 The application uses an JSON file-based system to store and manage teacher records.
 
-### Bonus/Optional Task
+### Additional Features
 
-An optional feature has been implemented to calculate and display the average number of classes taken by teachers. Users can also download a JSON file and import it into the system.
+- User can calculate the average number of classes taken by teachers.
+- Users can also download a JSON file.
+- Users can import JSON file into the system.
 
 ---
 
