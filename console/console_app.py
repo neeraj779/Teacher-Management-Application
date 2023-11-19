@@ -71,16 +71,24 @@ class TeacherManagementSystem:
     def show_all_teachers(self):
         try:
             teachers = self.load_teachers_from_json()
+
+            if not teachers:
+                self.console.print(
+                    '\nNo teachers found. Please add some teachers first.', style="yellow")
+                return
             columns = [
                 {'header': "ID", 'key': 'id', 'style': "cyan", 'justify': "center"},
                 {'header': "Name", 'key': 'full_name',
                     'style': "cyan", 'justify': "left"},
                 {'header': "Age", 'key': 'age',
                     'style': "cyan", 'justify': "center"},
+                {'header': "DOB", 'key': 'date_of_birth',
+                    'style': "cyan", 'justify': "center"},
                 {'header': "Classes", 'key': 'classes',
                     'style': "cyan", 'justify': "center"}
             ]
-            self.display_table("List of Teachers", columns, teachers)
+            self.display_table("\nList of Teachers", columns, teachers)
+
         except Exception as e:
             self.console.print(f"Error while loading data: {e}", style="red")
 
@@ -93,13 +101,13 @@ class TeacherManagementSystem:
 
             teachers_data = self.load_teachers_from_json()
 
-            new_teacher = Teacher(
-                id=len(teachers_data) + 1,
-                full_name=full_name,
-                age=age,
-                date_of_birth=date_of_birth,
-                classes=classes
-            )
+            new_teacher = {
+                'id': len(teachers_data) + 1,
+                'full_name': full_name,
+                'age': age,
+                'date_of_birth': date_of_birth,
+                'classes': classes,
+            }
 
             teachers_data.append(new_teacher)
             self.save_teachers_to_json(teachers_data)
@@ -112,7 +120,7 @@ class TeacherManagementSystem:
     def filter_teachers_by_age(self, age):
         try:
             teachers = self.load_teachers_from_json()
-            return [teacher for teacher in teachers if teacher.age == age]
+            return [teacher for teacher in teachers if teacher['age'] == age]
         except Exception as e:
             self.console.print(
                 f"Error while filtering by age: {e}", style="red")
@@ -120,7 +128,7 @@ class TeacherManagementSystem:
     def filter_teachers_by_classes(self, classes):
         try:
             teachers = self.load_teachers_from_json()
-            return [teacher for teacher in teachers if teacher.classes == classes]
+            return [teacher for teacher in teachers if teacher['classes'] == classes]
         except Exception as e:
             self.console.print(
                 f"Error while filtering by classes: {e}", style="red")
@@ -130,8 +138,15 @@ class TeacherManagementSystem:
             self.console.print("\nFilter teachers by:\n",
                                style="bold underline")
             self.console.print("1. Age")
-            self.console.print("2. Number of classes")
-            filter_choice = input("Enter your choice (1 or 2): ")
+            self.console.print("2. Number of classes\n")
+
+            while (True):
+                filter_choice = input("Enter your choice (1 or 2): ")
+                if filter_choice not in ['1', '2']:
+                    self.console.print(
+                        "\nInvalid choice. Please enter 1 or 2.", style="red")
+                    continue
+                break
 
             if filter_choice == '1':
                 age_filter = self.get_valid_input('\nEnter age filter: ')
@@ -145,11 +160,18 @@ class TeacherManagementSystem:
                     "\nInvalid choice. Please enter 1 or 2.", style="red")
                 return
 
+            if not teachers:
+                self.console.print(
+                    '\nNo teachers found for the given filters', style="yellow")
+                return
+
             columns = [
                 {'header': "ID", 'key': 'id', 'style': "cyan", 'justify': "center"},
                 {'header': "Name", 'key': 'full_name',
                     'style': "cyan", 'justify': "left"},
                 {'header': "Age", 'key': 'age',
+                    'style': "cyan", 'justify': "center"},
+                {'header': "DOB", 'key': 'date_of_birth',
                     'style': "cyan", 'justify': "center"},
                 {'header': "Classes", 'key': 'classes',
                     'style': "cyan", 'justify': "center"}
@@ -181,6 +203,8 @@ class TeacherManagementSystem:
                         'style': "cyan", 'justify': "left"},
                     {'header': "Age", 'key': 'age',
                         'style': "cyan", 'justify': "center"},
+                    {'header': "DOB", 'key': 'date_of_birth',
+                     'style': "cyan", 'justify': "center"},
                     {'header': "Classes", 'key': 'classes',
                         'style': "cyan", 'justify': "center"}
                 ]
@@ -201,6 +225,8 @@ class TeacherManagementSystem:
                     'style': "cyan", 'justify': "left"},
                 {'header': "Age", 'key': 'age',
                     'style': "cyan", 'justify': "center"},
+                {'header': "DOB", 'key': 'date_of_birth',
+                 'style': "cyan", 'justify': "center"},
                 {'header': "Classes", 'key': 'classes',
                     'style': "cyan", 'justify': "center"}
             ]
@@ -216,18 +242,19 @@ class TeacherManagementSystem:
     def perform_update_teacher(self, id):
         try:
             teachers = self.load_teachers_from_json()
-            teacher = next((t for t in teachers if t.id == id), None)
+            teacher = [t for t in teachers if t['id'] == id][0]
 
             if not teacher:
                 self.console.print('\nTeacher not found', style="red")
                 return
 
             self.console.print(
-                f"\nUpdating Teacher {teacher.full_name}\n", style="bold underline")
-            teacher.full_name = input('Enter new full name: ')
-            teacher.age = self.get_valid_input('Enter new age: ')
-            teacher.date_of_birth = input('Enter new date of birth: ')
-            teacher.classes = self.get_valid_input('Enter new classes: ')
+                f"\nUpdating Teacher {teacher['full_name']}\n", style="bold underline")
+
+            teacher['full_name'] = input('Enter new full name: ')
+            teacher['age'] = self.get_valid_input('Enter new age: ')
+            teacher['date_of_birth'] = input('Enter new date of birth: ')
+            teacher['classes'] = self.get_valid_input('Enter new classes: ')
 
             self.save_teachers_to_json(teachers)
 
@@ -249,6 +276,8 @@ class TeacherManagementSystem:
                     'style': "cyan", 'justify': "left"},
                 {'header': "Age", 'key': 'age',
                     'style': "cyan", 'justify': "center"},
+                {'header': "DOB", 'key': 'date_of_birth',
+                 'style': "cyan", 'justify': "center"},
                 {'header': "Classes", 'key': 'classes',
                     'style': "cyan", 'justify': "center"}
             ]
@@ -256,7 +285,7 @@ class TeacherManagementSystem:
 
             teacher_id = self.get_valid_input(
                 'Enter ID of the teacher to delete: ')
-            teachers = [t for t in teachers if t.id != teacher_id]
+            teachers = [t for t in teachers if t['id'] != teacher_id]
 
             self.save_teachers_to_json(teachers)
 
@@ -278,6 +307,8 @@ class TeacherManagementSystem:
         else:
             avg = classes_sum / total_teachers
             avg = round(avg, 2)
+        self.console.print(
+            f'\nAvgerage: {avg}', style="bold green")
         return avg
 
     def show_landing_page(self):
@@ -289,7 +320,9 @@ class TeacherManagementSystem:
         self.console.print("4. Search for a teacher")
         self.console.print("5. Update a teacher's record")
         self.console.print("6. Delete a teacher")
-        self.console.print("7. Exit")
+        self.console.print(
+            "7. Calculate Average number of classes taught by teachers")
+        self.console.print("8. Exit")
 
 
 def main():
@@ -298,7 +331,7 @@ def main():
     while True:
         tme.show_landing_page()
         choice = tme.get_valid_input(
-            "\nEnter your choice (1-7): ")
+            "\nEnter your choice (1-8): ")
 
         if choice == 1:
             tme.show_all_teachers()
@@ -313,12 +346,14 @@ def main():
         elif choice == 6:
             tme.delete_teacher()
         elif choice == 7:
+            tme.calculate_average()
+        elif choice == 8:
             tme.console.print(
-                "\nExiting the Teacher Management System. Goodbye!", style="bold")
+                "\nExiting the Teacher Management System!", style="bold")
             break
         else:
             tme.console.print(
-                "\nInvalid choice. Please enter a number between 1 and 7.", style="red")
+                "\nInvalid choice. Please enter a number between 1 and 8.", style="red")
 
         go_back = input(
             "\nDo you want to go back to the main menu? (yes/no): ")
