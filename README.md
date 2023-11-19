@@ -1,7 +1,7 @@
 <div align="center">
-<h1 align="center"> TEACHER-MANAGEMENT-APPLICATION</h1>
+<h1 align="center"> TEACHER MANAGEMENT APPLICATION</h1>
 
-![banner](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/71e79365-9663-40c1-a0a5-446dcd969a14)
+![banner](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/53e3113e-a7e3-4961-9be1-daa258562fb6)
 
 <h3>◦ Developed with the software and tools below.</h3>
 
@@ -9,7 +9,6 @@
 <img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat-square&logo=Python&logoColor=white" alt="Python" />
 <img src="https://img.shields.io/badge/Django-092E20.svg?style=flat-square&logo=Django&logoColor=white" alt="Django" />
 </p>
-<img src="https://img.shields.io/github/license/neeraj779/Teacher-Management-Application?style=flat-square&color=5D6D7E" alt="GitHub license" />
 <img src="https://img.shields.io/github/last-commit/neeraj779/Teacher-Management-Application?style=flat-square&color=5D6D7E" alt="git-last-commit" />
 <img src="https://img.shields.io/github/commit-activity/m/neeraj779/Teacher-Management-Application?style=flat-square&color=5D6D7E" alt="GitHub commit activity" />
 </div>
@@ -23,7 +22,8 @@
 - ⚙️ Modules
 - 🚀 Getting Started
     - 🔧 Installation
-    - 🤖 Running Teacher-Management-Application
+    - 🤖 Running Teacher Management Web Application
+    - 🤖 Running Teacher Management Console Application
 - 📷 Screenshots
 ---
 
@@ -216,48 +216,67 @@ python console/console_app.py
 ## Screenshots of Web Application
 
 1. Home Page
-    ![HomePage](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/2d8022ec-8c7c-4432-a6b5-e6c4f42cc63b)
 
-2. Add Teacher
+    ![HomePage](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/9b89d3e9-7620-4498-8229-cad1e6678f49)
+
+3. Add Teacher
    
-    ![addTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/46f2af24-9131-43f8-b6d5-214e860ae864)
+    ![addTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/c4dccb41-74cd-4d26-865d-ba9a2cede98f)
 
-4. Search Teacher
-
-   ![searchTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/955cbbb1-8233-4a07-9d9e-fceee2a66ba5)
-
-
-6. Update Teacher
-
-    ![updateTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/fc35754f-8801-4da0-a061-eba82f0fe522)
-
-
-8. Delete Teacher
+5. Search Teacher
    
-    ![deleteTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/1b039641-fb15-4596-a27e-cbd7a82f9a02)
+    ![searchTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/8d72b6b0-6e91-4866-84d0-412b93c6d92b)
 
-10. Filter Teacher
+
+7. Update Teacher
+   
+    ![updateTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/61aa18d1-fdad-4213-a25c-1aebb2a25fd7)
+
+9. Delete Teacher
     
-    ![filterTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/eeac7a03-d9f1-4515-9ab1-102350ef7551)
+    ![deleteTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/e0957c78-fe22-4f48-92cf-0446a50f2cdb)
 
-11. Import JSON'
+11. Filter Teacher
+    
+    ![filterTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/76f03494-9694-4b4d-881c-d6b4248cef73)
 
-    ![importJson](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/7aa8e217-a634-4fa2-8288-fdd9e4ad0bd3)
+13. Import JSON
+    
+    ![importJson](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/20bc4e9e-e574-4160-9ddc-b90eb4a03d10)
+
 
 ## Screenshots of Console Application
 
 1. Landing/Home Page
 
-2. Show all teachers
+   ![consoleHomePage](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/65a62ca5-a45e-427d-9738-29a79bc22b68)
 
-3. Add a teacher
+
+3. Show all teachers
+   
+    ![consoleShowAllTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/3d0ba47e-fbc0-4159-b2ed-bd1777c898d0)
+
+    
+5. Add a teacher
+   
+   ![consoleAddTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/c5842d8f-c21e-491e-80f9-44ff0fce284d)
 
 3. Filter teachers based on criteria
+   
+    ![consoleFilterTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/063895da-b3ed-47e4-8cd8-0a95efcd040d)
 
-4. Search for a teacher
+5. Search for a teacher
+   
+   ![consoleSearchTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/23f4874e-a61a-449d-8fa8-75f3e28ff30b)
 
-5. Update a teacher's record
+7. Update a teacher's record
+   
+   ![consoleUpdateTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/c95428ac-a653-48f5-88bf-8149b65feb4c)
 
-6. Delete a teacher
+9. Delete a teacher
+    
+    ![consoleDeleteTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/67acc8ee-b16d-4de3-9c96-c3668380a139)
 
-7. Calculate the average number of classes taken by teachers
+11. Calculate the average number of classes taken by teachers
+    
+    ![consoleAverage](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/7ff50f35-03dc-4eac-aaba-6370f20ec56e)
