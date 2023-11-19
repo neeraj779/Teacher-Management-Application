@@ -1,7 +1,8 @@
 <div align="center">
 <h1 align="center"> TEACHER MANAGEMENT APPLICATION</h1>
+    
+![banner](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/242f95d3-3239-4e2e-a2c7-04414ef43cbd)
 
-![banner](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/53e3113e-a7e3-4961-9be1-daa258562fb6)
 
 <h3>◦ Developed with the software and tools below.</h3>
 
