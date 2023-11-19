@@ -245,11 +245,11 @@ python console/console_app.py
     ![searchTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/8d72b6b0-6e91-4866-84d0-412b93c6d92b)
 
 
-7. Update Teacher
+7. Update teacher's record
    
     ![updateTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/61aa18d1-fdad-4213-a25c-1aebb2a25fd7)
 
-9. Delete Teacher
+9. Delete teacher's record
     
     ![deleteTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/e0957c78-fe22-4f48-92cf-0446a50f2cdb)
 
@@ -287,11 +287,11 @@ python console/console_app.py
    
    ![consoleSearchTeacher](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/23f4874e-a61a-449d-8fa8-75f3e28ff30b)
 
-7. Update a teacher's record
+7. Update teacher's record
    
    ![consoleUpdateTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/c95428ac-a653-48f5-88bf-8149b65feb4c)
 
-9. Delete a teacher
+9. Delete teacher's record
     
     ![consoleDeleteTeacherRecord](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/67acc8ee-b16d-4de3-9c96-c3668380a139)
 
