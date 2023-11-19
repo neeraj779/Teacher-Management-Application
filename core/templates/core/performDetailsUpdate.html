@@ -1,8 +1,8 @@
-{% extends 'core/base.html' %}
+{% extends 'core/base.html' %} 
 
 {% block title %}
   <title>Update Teacher Data</title>
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
   <div class="container mt-5">
@@ -20,19 +20,19 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="full_name" value="{{ teacher.full_name }}" />
+        <input type="text" class="form-control customInput" id="fullName" name="full_name" value="{{ teacher.full_name }}" />
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input type="number" class="form-control" id="age" name="age" value="{{ teacher.age }}" />
+        <input type="number" class="form-control customInput" id="age" name="age" value="{{ teacher.age }}" />
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" name="dob" value="{{ teacher.date_of_birth }}" />
+        <input type="date" class="form-control customInput" id="dob" name="dob" value="{{ teacher.date_of_birth }}" />
       </div>
       <div class="form-group">
         <label for="classes">Number of Classes</label>
-        <input type="number" class="form-control" id="classes" name="classes" value="{{ teacher.classes }}" />
+        <input type="number" class="form-control customInput" id="classes" name="classes" value="{{ teacher.classes }}" />
       </div>
       <button type="submit" class="btn btn-primary">Update Teacher</button>
     </form>

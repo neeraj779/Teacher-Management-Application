@@ -7,7 +7,7 @@
 
 {% block content %}
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Update Teacher</h1>
+    <h1 class="text-center mb-4">Update Teacher's Record</h1>
 
     {% if messages %}
       <div class="alert alert-info">
@@ -30,7 +30,7 @@
                 <span class="card-text">Age: {{ teacher.age }}</span>
                 <span class="card-text">Date of Birth: {{ teacher.date_of_birth }}</span>
                 <span class="card-text">Classes: {{ teacher.classes }}</span>
-                <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update Teacher Record</a>
+                <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update</a>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="container mt-5">
-    <h1 class="text-center mb-4">Teacher's Record</h1>
+    <h1 class="text-center mb-4">Add Teacher's Record</h1>
 
     {% if success_message %}
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -26,19 +26,19 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name" required />
+        <input type="text" class="form-control customInput" id="fullName" name="full_name" placeholder="Enter full name" required />
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input type="number" class="form-control" id="age" name="age" placeholder="Enter age" required />
+        <input type="number" class="form-control customInput" id="age" name="age" placeholder="Enter age" required />
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" name="dob" required />
+        <input type="date" class="form-control customInput" id="dob" name="dob" required />
       </div>
       <div class="form-group">
         <label for="classes">Number of Classes</label>
-        <input type="number" class="form-control" id="classes" name="classes" placeholder="Enter the number of classes" required />
+        <input type="number" class="form-control customInput" id="classes" name="classes" placeholder="Enter the number of classes" required />
       </div>
       <button type="submit" class="btn btn-primary">Add Teacher</button>
     </form>

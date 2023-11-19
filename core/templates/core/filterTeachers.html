@@ -39,11 +39,11 @@
               <span class="card-text">Age: {{ teacher.age }}</span>
               <span class="card-text">Date of Birth: {{ teacher.date_of_birth }}</span>
               <span class="card-text">Classes: {{ teacher.classes }}</span>
-              <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update Teacher</a>
+              <a href="{% url 'update' teacher.id %}" class="btn btn-primary btn-home">Update</a>
               <form action="{% url 'delete-teacher' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="teacher_id" value="{{ teacher.id }}" />
-                <button type="submit" class="btn btn-danger btn-home">Delete Teacher</button>
+                <button type="submit" class="btn btn-danger btn-home">Delete</button>
               </form>
             </div>
           </div>

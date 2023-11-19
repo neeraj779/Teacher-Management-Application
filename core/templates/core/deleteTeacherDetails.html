@@ -41,7 +41,7 @@
               <form action="{% url 'delete-teacher' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="teacher_id" value="{{ teacher.id }}" />
-                <button type="submit" class="btn btn-danger btn-home">Delete Teacher</button>
+                <button type="submit" class="btn btn-danger btn-home">Delete</button>
               </form>
             </div>
           </div>
