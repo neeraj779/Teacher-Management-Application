@@ -61,7 +61,7 @@ Each teacher's record includes:
   
 - Full Name: Complete name of the teacher.
 - Age: Age of the teacher.
-- Date of Birth: Birthdate of the teacher.
+- Date of Birth: Date of Birth of the teacher in dd-mm-yyyy format.
 - Number of classes: The count of classes the teacher is responsible for.
 
 ***Filter Teachers by Criteria***
@@ -136,7 +136,7 @@ https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/103d
 | [manage.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/manage.py)                                                     | Django management script for various project-related tasks. |
 | [Procfile](https://github.com/neeraj779/Teacher-Management-Application/blob/main/Procfile)                                                       | Heroku Procfile specifying the commands to run the application. |
 | [requirements.txt](https://github.com/neeraj779/Teacher-Management-Application/blob/main/requirements.txt)                                       | List of Python packages and their versions required for the project. |
-| [main.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/console\main.py)                                                 | Main console application file, serving as the entry point for the console-based functionalities. |
+| [console_app.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/console\console_app.py)                                                 | Main console application file, serving as the entry point for the console-based functionalities. |
 | [admin.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/core\admin.py)                                                  | Django admin configuration for managing app models through the admin interface. |
 | [apps.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/core\apps.py)                                                    | Django application configuration with app-specific settings. |
 | [models.py](https://github.com/neeraj779/Teacher-Management-Application/blob/main/core\models.py)                                                | Definition of Django models representing the data structure of the application. |
