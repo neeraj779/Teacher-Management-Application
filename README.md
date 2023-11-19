@@ -186,7 +186,18 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-6. Create a .env file in the root of the project and add the necessary environment variables. You can use the provided .env.example file as a template.
+### Env setup
+Create a .env file in the root of the project and add the necessary environment variables. You can use the provided .env.example file as a template.
+
+
+`cp .env.example .env`
+
+#### env File Explanation
+Most them are default values, you can change them as per your needs.
+
+- `SECRET_KEY` = Django Secret Key
+- `DEBUG` = 'True'
+- `ALLOWED_HOSTS` = Domain name of allowed hosts
   
 
 ### 🤖 Running Teacher-Management-Application
@@ -195,8 +206,15 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+### 🤖 Running Console-Based Teacher-Management-Application
 
-## Screenshots
+If you prefer a console-based application you can skip the env setup and run the following command:
+
+```sh
+python console/console_app.py
+```
+
+## Screenshots of Web Application
 
 1. Home Page
     ![HomePage](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/2d8022ec-8c7c-4432-a6b5-e6c4f42cc63b)
@@ -227,3 +245,16 @@ python manage.py runserver
 
     ![importJson](https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/7aa8e217-a634-4fa2-8288-fdd9e4ad0bd3)
 
+## Screenshots of Console Application
+
+1. Landing/Home Page
+
+2. Show all teachers
+
+3. Fileter teachers based on criteria
+
+4. Search for a teacher
+
+5. Update a teacher's record
+
+6. Delete a teacher
