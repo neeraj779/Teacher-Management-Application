@@ -2,7 +2,9 @@ import json
 from django.contrib import messages
 from django.http import FileResponse
 from django.shortcuts import render, redirect
-from console.main import save_teachers_to_json, load_teachers_from_json, search_teachers, calculate_average
+from console.console_app import TeacherManagementSystem
+
+tme = TeacherManagementSystem()
 
 
 def home_page(request):
@@ -10,7 +12,7 @@ def home_page(request):
 
 
 def show_all_teachers(request):
-    teachers = load_teachers_from_json()
+    teachers = tme.load_teachers_from_json()
     if not teachers:
         messages.success(
             request, 'No teachers found in the database. Please add teachers first.')
@@ -26,7 +28,7 @@ def add_teacher(request):
             date_of_birth = request.POST.get('dob')
             classes = int(request.POST.get('classes'))
 
-            teachers_data = load_teachers_from_json()
+            teachers_data = tme.load_teachers_from_json()
 
             new_teacher = {
                 'id': len(teachers_data) + 1,
@@ -37,7 +39,7 @@ def add_teacher(request):
             }
 
             teachers_data.append(new_teacher)
-            save_teachers_to_json(teachers_data)
+            tme.save_teachers_to_json(teachers_data)
 
             success_message = f'Teacher "{full_name}" added successfully'
             return render(request, 'core/addTeacher.html', {'success_message': success_message})
@@ -53,7 +55,7 @@ def filter_teachers(request):
         age_filter = request.POST.get('age')
         classes_filter = request.POST.get('classes')
 
-        teachers = load_teachers_from_json()
+        teachers = tme.load_teachers_from_json()
 
         filtered_teachers = teachers
 
@@ -81,9 +83,9 @@ def filter_teachers(request):
 
 def search_teacher(request):
     query = request.GET.get('query', '')
-    teachers_data = load_teachers_from_json()
+    teachers_data = tme.load_teachers_from_json()
 
-    search_results = search_teachers(query, teachers_data)
+    search_results = tme.search_teachers(query, teachers_data)
 
     if search_results == 404:
         messages.success(
@@ -98,7 +100,7 @@ def search_teacher(request):
 
 
 def update_teacher(request):
-    teachers = load_teachers_from_json()
+    teachers = tme.load_teachers_from_json()
     if not teachers:
         messages.success(
             request, 'No teachers found in the database. Please add teachers first.')
@@ -107,7 +109,7 @@ def update_teacher(request):
 
 
 def update(request, id):
-    teachers = load_teachers_from_json()
+    teachers = tme.load_teachers_from_json()
     teacher = [teacher for teacher in teachers if teacher['id'] == id][0]
     if request.method == 'POST':
         teacher['full_name'] = request.POST.get('full_name')
@@ -115,7 +117,7 @@ def update(request, id):
         teacher['date_of_birth'] = request.POST.get('dob')
         teacher['classes'] = int(request.POST.get('classes'))
 
-        save_teachers_to_json(teachers)
+        tme.save_teachers_to_json(teachers)
 
         messages.success(request, 'Teacher information updated successfully')
         return redirect('update-teacher')
@@ -124,7 +126,7 @@ def update(request, id):
 
 
 def delete_teacher(request):
-    teachers = load_teachers_from_json()
+    teachers = tme.load_teachers_from_json()
 
     if request.method == 'POST':
         teacher_id = int(request.POST.get('teacher_id'))
@@ -132,7 +134,7 @@ def delete_teacher(request):
         teachers = [
             teacher for teacher in teachers if teacher['id'] != teacher_id]
 
-        save_teachers_to_json(teachers)
+        tme.save_teachers_to_json(teachers)
 
         success_message = 'Teacher record successfully removed'
         return render(request, 'core/deleteTeacherDetails.html', {'teachers': teachers, 'success_message': success_message})
@@ -144,7 +146,7 @@ def delete_teacher(request):
 
 
 def calculate_avg(request):
-    avg = calculate_average()
+    avg = tme.calculate_average()
     return render(request, 'core/home.html', {'avg': avg})
 
 
@@ -162,14 +164,14 @@ def import_json(request):
                 messages.error(request, 'Please upload a JSON file')
                 return render(request, 'core/importJson.html')
 
-            existing_teachers_data = load_teachers_from_json()
+            existing_teachers_data = tme.load_teachers_from_json()
 
             json_content = json.loads(uploaded_file.read().decode('utf-8'))
             new_teachers_data = json_content.get('teachersData', [])
 
             existing_teachers_data.extend(new_teachers_data)
 
-            save_teachers_to_json(existing_teachers_data)
+            tme.save_teachers_to_json(existing_teachers_data)
 
             success_message = 'JSON file uploaded successfully.'
             messages.success(request, success_message)
