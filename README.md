@@ -38,13 +38,11 @@ You can view the live version of this project at below link ⬇️
 
 ## 📍 Overview
 
-The Teacher Management Application is a comprehensive solution designed for the management of teacher records, providing both console-based and backend functionalities. 
+The Teacher Management Application is a solution designed for the management of teacher records, providing both console-based and web-based functionalities. 
 
 ---
 
 ## 📦 Features
-
-The application focuses on delivering a user-friendly experience with a range of end-user features. These features include:
 
 ***Landing/Home Page:***
 - Show all teachers: View a list of all teachers.
