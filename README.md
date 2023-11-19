@@ -184,26 +184,28 @@ pip install -r requirements.txt
 ```
 
 ### Env setup
-Create a .env file in the root of the project and add the necessary environment variables. You can use the provided .env.example file as a template.
+Create a .env file in the root directory of the project and copy the contents of .env.example to it.
 
+You can do this by running the following command in the root directory of the project:
 
-`cp .env.example .env`
+- `cp .env.example .env`
 
-#### env File Explanation
-Most them are default values, you can change them as per your needs.
+#### Environment Variables 
 
-- `SECRET_KEY` = Django Secret Key
-- `DEBUG` = 'True'
-- `ALLOWED_HOSTS` = Domain name of allowed hosts
+Most of the environment variables are already set in the .env.example file. You can change them according to your needs.
+
+- `SECRET_KEY` = Django Secret Key (Set to a random string of characters for development)
+- `DEBUG` = True or False (Set True for development and False for production)
+- `ALLOWED_HOSTS` = Allowed Hosts (Set to * for development)
   
 
-### 🤖 Running Teacher-Management-Application
+### 🤖 Running Teacher Management Web  Application
 
 ```sh
 python manage.py runserver
 ```
 
-### 🤖 Running Console-Based Teacher-Management-Application
+### 🤖 Running Teacher Management Console Application
 
 If you prefer a console-based application you can skip the env setup and run the following command:
 
@@ -248,10 +250,14 @@ python console/console_app.py
 
 2. Show all teachers
 
-3. Fileter teachers based on criteria
+3. Add a teacher
+
+3. Filter teachers based on criteria
 
 4. Search for a teacher
 
 5. Update a teacher's record
 
 6. Delete a teacher
+
+7. Calculate the average number of classes taken by teachers
