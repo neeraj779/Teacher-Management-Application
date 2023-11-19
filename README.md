@@ -19,6 +19,7 @@
 ## 📖 Table of Contents
 - 📍 Overview
 - 📦 Features
+- Demo Videos
 - 📂 repository Structure
 - ⚙️ Modules
 - 🚀 Getting Started
@@ -76,6 +77,17 @@ The application uses an JSON file-based system to store and manage teacher recor
 ---
 
 
+### Demo Video
+
+***Teacher Management Web Application Demo Video***
+
+https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/230f77b0-28e8-480e-87a8-31468c18c485
+
+***Teacher Management Console Application Demo Video***
+
+https://github.com/neeraj779/Teacher-Management-Application/assets/85169876/103d07b3-2741-4be2-b4eb-894172bde9d7
+
+
 ## 📂 Repository Structure
 
 ```sh
@@ -84,7 +96,7 @@ The application uses an JSON file-based system to store and manage teacher recor
     ├── .github/
     │   └── ISSUE_TEMPLATE/
     ├── console/
-    │   └── main.py
+    │   └── console_app.py
     ├── core/
     │   ├── admin.py
     │   ├── apps.py
