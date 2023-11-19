@@ -9,6 +9,7 @@
     {% endblock %}
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}" />
     {% block styles %}
 
@@ -16,10 +17,41 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark nav-cus">
+      <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'show-all-teachers' %}"><i class="fas fa-star"></i> See Teachers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add-teacher' %}"><i class="fas fa-plus"></i> Add Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'filter-teachers' %}"><i class="fas fa-filter"></i> Filter Teachers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'search-teacher' %}"><i class="fas fa-search"></i> Search Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'update-teacher' %}"><i class="fas fa-edit"></i> Update Teacher's Record</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'delete-teacher' %}"><i class="fas fa-trash"></i> Delete Teacher</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'import-json' %}"><i class="fas fa-file-upload"></i> Import JSON</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     {% block content %}
 
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
