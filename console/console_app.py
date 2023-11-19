@@ -356,10 +356,10 @@ def main():
                 "\nInvalid choice. Please enter a number between 1 and 8.", style="red")
 
         go_back = input(
-            "\nDo you want to go back to the main menu? (yes/no): ")
-        if go_back.lower() != 'yes':
+            "\nDo you want to go back to the main menu? (y/n): ")
+        if go_back.lower() != 'y':
             tme.console.print(
-                "\nExiting the Teacher Management System. Goodbye!", style="bold")
+                "\nThank you for using the Teacher Management System!", style="bold")
             break
 
 
